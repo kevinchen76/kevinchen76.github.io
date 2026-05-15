@@ -1,0 +1,240 @@
+$ cat /home/user/kevinchen76.github.io/experience/index.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Experience &mdash; Kevin Chen</title>
+  <style>
+    :root {
+      --teal: #2bbc8a; --teal-d: #1fa374;
+      --navy: #0d1b2a; --text: #1c1c1e;
+      --muted: #6b7280; --border: #e5e7eb;
+      --bg: #fff; --bg2: #f9fafb;
+      --nh: 58px;
+      --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      --r: 8px; --max: 840px;
+      --sh: 0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.04);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body { font-family: var(--font); color: var(--text); background: var(--bg); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    /* NAV */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: var(--nh);
+      background: rgba(255,255,255,.88);
+      backdrop-filter: blur(14px) saturate(160%);
+      -webkit-backdrop-filter: blur(14px) saturate(160%);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center;
+      padding: 0 2rem;
+    }
+    .nav-brand { font-weight: 700; font-size: 1rem; letter-spacing: -.01em; margin-right: auto; color: var(--navy); transition: color .15s; }
+    .nav-brand:hover { color: var(--teal); }
+    .nav-links { display: flex; align-items: center; gap: .1rem; }
+    .nav-links a { font-size: .875rem; font-weight: 500; color: var(--muted); padding: .35rem .75rem; border-radius: var(--r); transition: color .15s, background .15s; }
+    .nav-links a:hover { color: var(--navy); background: var(--bg2); }
+    .nav-links a.active { color: var(--teal); }
+
+    /* PAGE */
+    .page { padding-top: var(--nh); }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 3.5rem 2rem 5rem; }
+
+    .ph { margin-bottom: 2.5rem; }
+    .ph h1 { font-size: 2rem; font-weight: 700; color: var(--navy); margin-bottom: .3rem; }
+    .ph p { color: var(--muted); font-size: .92rem; }
+
+    /* TIMELINE */
+    .timeline { display: flex; flex-direction: column; }
+    .job {
+      display: grid;
+      grid-template-columns: 1fr;
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--border);
+      gap: .75rem;
+    }
+    .job:first-child { padding-top: 0; }
+    .job:last-child { border-bottom: none; }
+
+    .job-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; }
+    .job-left { flex: 1; min-width: 0; }
+    .job-company { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: .15rem; }
+    .job-title { font-size: .92rem; color: var(--teal); font-weight: 600; margin-bottom: .1rem; }
+    .job-right { text-align: right; flex-shrink: 0; }
+    .job-dates { font-size: .8rem; color: var(--muted); font-weight: 500; white-space: nowrap; }
+    .job-location { font-size: .78rem; color: var(--muted); margin-top: .1rem; }
+
+    .job-bullets { list-style: none; display: flex; flex-direction: column; gap: .5rem; padding: 0; }
+    .job-bullets li {
+      font-size: .9rem; color: var(--text); line-height: 1.7;
+      padding-left: 1.1rem; position: relative;
+    }
+    .job-bullets li::before {
+      content: ''; position: absolute; left: 0; top: .65em;
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--teal);
+    }
+
+    footer { border-top: 1px solid var(--border); padding: 1.5rem 2rem; text-align: center; font-size: .78rem; color: var(--muted); }
+    footer a { color: var(--teal); }
+
+    @media (max-width: 640px) {
+      .nav { padding: 0 1rem; }
+      .nav-links a { padding: .3rem .5rem; font-size: .82rem; }
+      .wrap { padding: 2rem 1.25rem 4rem; }
+      .job-header { flex-direction: column; gap: .25rem; }
+      .job-right { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="/" class="nav-brand">Kevin Chen</a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/experience" class="active">Experience</a>
+      <a href="/projects">Projects</a>
+      <a href="/publications">Publications</a>
+      <a href="/certifications">Certifications</a>
+    </div>
+  </nav>
+
+  <div class="page">
+    <div class="wrap">
+
+      <div class="ph">
+        <h1>Experience</h1>
+        <p>Professional and research roles &mdash; reverse chronological</p>
+      </div>
+
+      <div class="timeline">
+
+        <!-- ROLE 1 -->
+        <div class="job">
+          <div class="job-header">
+            <div class="job-left">
+              <div class="job-company">Urban Information Lab &mdash; The University of Texas at Austin</div>
+              <div class="job-title">Research Professional</div>
+            </div>
+            <div class="job-right">
+              <div class="job-dates">Feb 2024 &ndash; Present</div>
+              <div class="job-location">Austin, TX &middot; Hybrid</div>
+            </div>
+          </div>
+          <ul class="job-bullets">
+            <li>Co-authored 13+ peer-reviewed publications on LLM safety and AI ethics, accumulating 77+ citations within 12 months.</li>
+            <li>Built 4+ Python text-mining pipelines using regex tokenization and pandas NLP preprocessing to extract and classify hundreds of institutional AI policy documents, with automated quality checks for consistent reruns.</li>
+            <li>Engineered Python/SQL ETL pipelines with pandas null-check assertions, dtype enforcement, and schema validation; cut manual QA errors by ~40%.</li>
+            <li>Designed 5+ Tableau dashboards with calculated fields and cross-filter parameters to communicate LLM evaluation results and model behavior trends to technical and non-technical stakeholders.</li>
+          </ul>
+        </div>
+
+        <!-- ROLE 2 -->
+        <div class="job">
+          <div class="job-header">
+            <div class="job-left">
+              <div class="job-company">Higginbotham Insurance</div>
+              <div class="job-title">Data Analytics Intern</div>
+            </div>
+            <div class="job-right">
+              <div class="job-dates">Jun 2024 &ndash; Aug 2024</div>
+              <div class="job-location">Odessa, TX &middot; On-site</div>
+            </div>
+          </div>
+          <ul class="job-bullets">
+            <li>Validated 20+ Tableau dashboards by writing reconciliation SQL against Snowflake source tables, surfacing row-count and KPI discrepancies across 3 account teams before client distribution.</li>
+            <li>Refactored 12+ Snowflake SQL queries by replacing correlated subqueries with CTEs and eliminating full table scans, reducing average execution time by up to 35% on client renewal reporting tables.</li>
+            <li>Coordinated with account managers to triage and resolve urgent data requests, maintaining on-time delivery of all client-facing materials through a 10-week engagement.</li>
+          </ul>
+        </div>
+
+        <!-- ROLE 3 -->
+        <div class="job">
+          <div class="job-header">
+            <div class="job-left">
+              <div class="job-company">Population Research Center &mdash; UT Austin</div>
+              <div class="job-title">Undergraduate Research Assistant</div>
+            </div>
+            <div class="job-right">
+              <div class="job-dates">Feb 2024 &ndash; May 2024</div>
+              <div class="job-location">Austin, TX &middot; Remote</div>
+            </div>
+          </div>
+          <ul class="job-bullets">
+            <li>Assisted with data collection, cleaning, and statistical analysis for population and demographic research projects.</li>
+            <li>Applied quantitative methods and data visualization techniques to support faculty research outputs.</li>
+          </ul>
+        </div>
+
+        <!-- ROLE 4 -->
+        <div class="job">
+          <div class="job-header">
+            <div class="job-left">
+              <div class="job-company">The University of Texas at Austin</div>
+              <div class="job-title">First-Year Experience Peer Mentor</div>
+            </div>
+            <div class="job-right">
+              <div class="job-dates">Aug 2023 &ndash; Nov 2023</div>
+              <div class="job-location">Austin, TX &middot; On-site</div>
+            </div>
+          </div>
+          <ul class="job-bullets">
+            <li>Guided incoming first-year students through academic resources, campus life, and university systems to support a successful transition.</li>
+            <li>Facilitated weekly small-group discussions and one-on-one check-ins to build community and address individual challenges.</li>
+          </ul>
+        </div>
+
+        <!-- ROLE 5 -->
+        <div class="job">
+          <div class="job-header">
+            <div class="job-left">
+              <div class="job-company">Texas Public Policy Foundation</div>
+              <div class="job-title">Policy Research Intern</div>
+            </div>
+            <div class="job-right">
+              <div class="job-dates">Jun 2023 &ndash; Aug 2023</div>
+              <div class="job-location">Austin, TX &middot; On-site</div>
+            </div>
+          </div>
+          <ul class="job-bullets">
+            <li>Produced data-backed policy briefs on data privacy, online safety, deepfakes, and AI regulation through structured literature analysis.</li>
+            <li>Incorporated stakeholder feedback into tracked revisions and delivered finalized briefs under tight deadlines.</li>
+          </ul>
+        </div>
+
+        <!-- ROLE 6 -->
+        <div class="job">
+          <div class="job-header">
+            <div class="job-left">
+              <div class="job-company">Texas House of Representatives</div>
+              <div class="job-title">Legislative Aide &mdash; Rep. Briscoe Cain (HD-128)</div>
+            </div>
+            <div class="job-right">
+              <div class="job-dates">Jan 2023 &ndash; May 2023</div>
+              <div class="job-location">Austin, TX &middot; On-site</div>
+            </div>
+          </div>
+          <ul class="job-bullets">
+            <li>Supported Representative Briscoe Cain with legislative research, constituent correspondence, and bill tracking through the Texas House session.</li>
+            <li>Attended committee hearings and floor sessions, summarizing proceedings and identifying relevant policy developments.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; <span id="year"></span> Kevin Chen &nbsp;&middot;&nbsp;
+    <a href="mailto:kevinchen2662@gmail.com">kevinchen2662@gmail.com</a></p>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
