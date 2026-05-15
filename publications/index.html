@@ -1,0 +1,340 @@
+$ cat /home/user/kevinchen76.github.io/publications/index.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Publications &mdash; Kevin Chen</title>
+  <style>
+    :root {
+      --teal: #2bbc8a; --teal-d: #1fa374;
+      --navy: #0d1b2a; --text: #1c1c1e;
+      --muted: #6b7280; --border: #e5e7eb;
+      --bg: #fff; --bg2: #f9fafb;
+      --nh: 58px;
+      --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      --r: 8px; --max: 840px;
+      --sh: 0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.04);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body { font-family: var(--font); color: var(--text); background: var(--bg); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    /* NAV */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: var(--nh);
+      background: rgba(255,255,255,.88);
+      backdrop-filter: blur(14px) saturate(160%);
+      -webkit-backdrop-filter: blur(14px) saturate(160%);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center;
+      padding: 0 2rem;
+    }
+    .nav-brand { font-weight: 700; font-size: 1rem; letter-spacing: -.01em; margin-right: auto; color: var(--navy); transition: color .15s; }
+    .nav-brand:hover { color: var(--teal); }
+    .nav-links { display: flex; align-items: center; gap: .1rem; }
+    .nav-links a { font-size: .875rem; font-weight: 500; color: var(--muted); padding: .35rem .75rem; border-radius: var(--r); transition: color .15s, background .15s; }
+    .nav-links a:hover { color: var(--navy); background: var(--bg2); }
+    .nav-links a.active { color: var(--teal); }
+
+    /* PAGE */
+    .page { padding-top: var(--nh); }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 3.5rem 2rem 5rem; }
+
+    .ph { margin-bottom: .75rem; }
+    .ph h1 { font-size: 2rem; font-weight: 700; color: var(--navy); margin-bottom: .3rem; }
+    .ph p { color: var(--muted); font-size: .92rem; }
+
+    .meta-row { display: flex; align-items: center; gap: .75rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .cite-badge { display: inline-flex; align-items: center; background: var(--navy); color: #fff; padding: .28rem .85rem; border-radius: 999px; font-size: .78rem; font-weight: 700; }
+    .scholar-link { display: inline-flex; align-items: center; padding: .28rem .75rem; background: rgba(43,188,138,.1); color: var(--teal-d); border-radius: 999px; font-size: .78rem; font-weight: 600; transition: background .15s, color .15s; }
+    .scholar-link:hover { background: var(--teal); color: #fff; }
+
+    /* ACCORDION */
+    .acc-list { display: flex; flex-direction: column; gap: .55rem; }
+    .acc-item { border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; transition: box-shadow .2s; }
+    .acc-item:hover { box-shadow: var(--sh); }
+    .acc-btn {
+      width: 100%; display: flex; align-items: flex-start; justify-content: space-between;
+      gap: 1rem; padding: 1.05rem 1.25rem;
+      background: none; border: none; cursor: pointer; text-align: left;
+      transition: background .15s;
+    }
+    .acc-btn:hover, .acc-btn[aria-expanded="true"] { background: var(--bg2); }
+    .acc-info { flex: 1; min-width: 0; }
+    .acc-title { font-size: .97rem; font-weight: 600; color: var(--navy); line-height: 1.4; margin-bottom: .22rem; }
+    .acc-sub { font-size: .78rem; color: var(--muted); }
+    .cite { color: var(--teal); font-weight: 600; }
+    .acc-chevron { color: var(--teal); font-size: 1.1rem; flex-shrink: 0; margin-top: .1rem; transition: transform .2s; line-height: 1; }
+    .acc-btn[aria-expanded="true"] .acc-chevron { transform: rotate(45deg); }
+    .acc-body { max-height: 0; overflow: hidden; transition: max-height .3s ease; }
+    .acc-body.open { max-height: 400px; }
+    .acc-inner { padding: .1rem 1.25rem 1.1rem; }
+    .acc-inner .authors { font-size: .86rem; color: var(--muted); line-height: 1.6; margin-bottom: .25rem; }
+    .acc-inner .venue { font-size: .83rem; color: var(--muted); font-style: italic; margin-bottom: .5rem; }
+    .pill-row { display: flex; flex-wrap: wrap; gap: .4rem; }
+    .pill {
+      display: inline-block; padding: .2rem .65rem;
+      background: rgba(43,188,138,.1); color: var(--teal-d);
+      border-radius: 999px; font-size: .73rem; font-weight: 600;
+      transition: background .15s, color .15s;
+    }
+    .pill:hover { background: var(--teal); color: #fff; }
+
+    footer { border-top: 1px solid var(--border); padding: 1.5rem 2rem; text-align: center; font-size: .78rem; color: var(--muted); }
+    footer a { color: var(--teal); }
+
+    @media (max-width: 640px) {
+      .nav { padding: 0 1rem; }
+      .nav-links a { padding: .3rem .5rem; font-size: .82rem; }
+      .wrap { padding: 2rem 1.25rem 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="/" class="nav-brand">Kevin Chen</a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/projects">Projects</a>
+      <a href="/publications" class="active">Publications</a>
+      <a href="/certifications">Certifications</a>
+    </div>
+  </nav>
+
+  <div class="page">
+    <div class="wrap">
+
+      <div class="ph">
+        <h1>Publications</h1>
+      </div>
+
+      <div class="meta-row">
+        <span class="cite-badge">77+ Total Citations</span>
+        <a class="scholar-link" href="https://scholar.google.com/citations?user=L82lUkgAAAAJ" target="_blank" rel="noopener">Google Scholar &rarr;</a>
+      </div>
+
+      <div class="acc-list">
+
+        <!-- ADD: new publication here -->
+
+        <div class="acc-item">
+          <button class="acc-btn" aria-expanded="false">
+            <div class="acc-info">
+              <div class="acc-title">Generative AI and LLMs in industry: a text-mining analysis of guidelines across 14 industrial sectors</div>
+              <div class="acc-sub">Humanities and Social Sciences Communications &nbsp;&middot;&nbsp; 2026</div>
+            </div>
+            <span class="acc-chevron">&#43;</span>
+          </button>
+          <div class="acc-body">
+            <div class="acc-inner">
+              <p class="authors">Jiao J., Afroogh S., <strong>Chen K.</strong>, Atkinson D., Dhurandhar A.</p>
+              <p class="venue">Nature Humanities and Social Sciences Communications, 13, 410 &middot; 2026</p>
+              <div class="pill-row"><a href="#" class="pill">DOI &rarr;</a></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <button class="acc-btn" aria-expanded="false">
+            <div class="acc-info">
+              <div class="acc-title">LLMs and childhood safety: Identifying risks and proposing a protection framework</div>
+              <div class="acc-sub">arXiv:2502.11242 &nbsp;&middot;&nbsp; 2025 &nbsp;&middot;&nbsp; <span class="cite">22 citations</span></div>
+            </div>
+            <span class="acc-chevron">&#43;</span>
+          </button>
+          <div class="acc-body">
+            <div class="acc-inner">
+              <p class="authors">Jiao J., Afroogh S., <strong>Chen K.</strong>, Murali A., Atkinson D., Dhurandhar A.</p>
+              <p class="venue">arXiv preprint arXiv:2502.11242 &middot; 2025</p>
+              <div class="pill-row"><a href="https://arxiv.org/abs/2502.11242" class="pill" target="_blank" rel="noopener">arXiv &rarr;</a></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <button class="acc-btn" aria-expanded="false">
+            <div class="acc-info">
+              <div class="acc-title">LLM Ethics Benchmark: a three-dimensional assessment of moral reasoning in LLMs</div>
+              <div class="acc-sub">Scientific Reports &nbsp;&middot;&nbsp; 2025 &nbsp;&middot;&nbsp; <span class="cite">21 citations</span></div>
+            </div>
+            <span class="acc-chevron">&#43;</span>
+          </button>
+          <div class="acc-body">
+            <div class="acc-inner">
+              <p class="authors">Jiao J., Afroogh S., Murali A., <strong>Chen K.</strong>, Atkinson D., Dhurandhar A.</p>
+              <p class="venue">Scientific Reports 15(1), 34642 &middot; 2025</p>
+              <div class="pill-row"><a href="#" class="pill">DOI &rarr;</a></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <button class="acc-btn" aria-expanded="false">
+            <div class="acc-info">
+              <div class="acc-title">The global landscape of academic guidelines for generative AI and LLMs</div>
+              <div class="acc-sub">Nature Human Behaviour &nbsp;&middot;&nbsp; 2025 &nbsp;&middot;&nbsp; <span class="cite">4 citations</span></div>
+            </div>
+            <span class="acc-chevron">&#43;</span>
+          </button>
+          <div class="acc-body">
+            <div class="acc-inner">
+              <p class="authors">Jiao J., Afroogh S., <strong>Chen K.</strong>, Atkinson D., Dhurandhar A.</p>
+              <p class="venue">Nature Human Behaviour 9(4), 638&ndash;642 &middot; 2025</p>
+              <div class="pill-row">
+                <a href="#" class="pill">DOI &rarr;</a>
+                <a href="https://arxiv.org/abs/2406.18842" class="pill" target="_blank" rel="noopener">arXiv &rarr;</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <button class="acc-btn" aria-expanded="false">
+            <div class="acc-info">
+              <div class="acc-title">Safe-Child-LLM: A Developmental Benchmark for Evaluating LLM Safety in Child-LLM Interactions</div>
+              <div class="acc-sub">arXiv:2506.13510 &nbsp;&middot;&nbsp; 2025 &nbsp;&middot;&nbsp; <span class="cite">10 citations</span></div>
+            </div>
+            <span class="acc-chevron">&#43;</span>
+          </button>
+          <div class="acc-body">
+            <div class="acc-inner">
+              <p class="authors">Jiao J., Afroogh S., <strong>Chen K.</strong>, Murali A., Atkinson D., Dhurandhar A.</p>
+              <p class="venue">arXiv preprint arXiv:2506.13510 &middot; 2025</p>
+              <div class="pill-row"><a href="https://arxiv.org/abs/2506.13510" class="pill" target="_blank" rel="noopener">arXiv &rarr;</a></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <button class="acc-btn" aria-expanded="false">
+            <div class="acc-info">
+              <div class="acc-title">Generative AI and LLMs in industry: text-mining analysis across 14 sectors</div>
+              <div class="acc-sub">arXiv:2501.00957 &nbsp;&middot;&nbsp; 2025 &nbsp;&middot;&nbsp; <span class="cite">12 citations</span></div>
+            </div>
+            <span class="acc-chevron">&#43;</span>
+          </button>
+          <div class="acc-body">
+            <div class="acc-inner">
+              <p class="authors">Jiao J., Afroogh S., <strong>Chen K.</strong>, Atkinson D., Dhurandhar A.</p>
+              <p class="venue">arXiv preprint arXiv:2501.00957 &middot; 2025</p>
+              <div class="pill-row"><a href="https://arxiv.org/abs/2501.00957" class="pill" target="_blank" rel="noopener">arXiv &rarr;</a></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <button class="acc-btn" aria-expanded="false">
+            <div class="acc-info">
+              <div class="acc-title">LLM Harms: A Taxonomy and Discussion</div>
+              <div class="acc-sub">arXiv:2512.05929 &nbsp;&middot;&nbsp; 2025</div>
+            </div>
+            <span class="acc-chevron">&#43;</span>
+          </button>
+          <div class="acc-body">
+            <div class="acc-inner">
+              <p class="authors"><strong>Chen K.</strong>, Afroogh S., Murali A., Atkinson D., Dhurandhar A., Jiao J.</p>
+              <p class="venue">arXiv preprint arXiv:2512.05929 &middot; 2025</p>
+              <div class="pill-row"><a href="https://arxiv.org/abs/2512.05929" class="pill" target="_blank" rel="noopener">arXiv &rarr;</a></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <button class="acc-btn" aria-expanded="false">
+            <div class="acc-info">
+              <div class="acc-title">Evaluating LLM Safety Across Child Development Stages: A Simulated Agent Approach</div>
+              <div class="acc-sub">arXiv:2510.05484 &nbsp;&middot;&nbsp; 2025 &nbsp;&middot;&nbsp; <span class="cite">2 citations</span></div>
+            </div>
+            <span class="acc-chevron">&#43;</span>
+          </button>
+          <div class="acc-body">
+            <div class="acc-inner">
+              <p class="authors">Murali A., Afroogh S., <strong>Chen K.</strong>, Atkinson D., Dhurandhar A., Jiao J.</p>
+              <p class="venue">arXiv preprint arXiv:2510.05484 &middot; 2025</p>
+              <div class="pill-row"><a href="https://arxiv.org/abs/2510.05484" class="pill" target="_blank" rel="noopener">arXiv &rarr;</a></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <button class="acc-btn" aria-expanded="false">
+            <div class="acc-info">
+              <div class="acc-title">IGGA: A Dataset of Industrial Guidelines and Policy Statements for Generative AIs</div>
+              <div class="acc-sub">arXiv:2501.00959 &nbsp;&middot;&nbsp; 2025 &nbsp;&middot;&nbsp; <span class="cite">1 citation</span></div>
+            </div>
+            <span class="acc-chevron">&#43;</span>
+          </button>
+          <div class="acc-body">
+            <div class="acc-inner">
+              <p class="authors">Jiao J., Afroogh S., <strong>Chen K.</strong>, Atkinson D., Dhurandhar A.</p>
+              <p class="venue">arXiv preprint arXiv:2501.00959 &middot; 2025</p>
+              <div class="pill-row"><a href="https://arxiv.org/abs/2501.00959" class="pill" target="_blank" rel="noopener">arXiv &rarr;</a></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <button class="acc-btn" aria-expanded="false">
+            <div class="acc-info">
+              <div class="acc-title">AGGA: A Dataset of Academic Guidelines for Generative AI and Large Language Models</div>
+              <div class="acc-sub">arXiv:2501.02063 / Harvard Dataverse &nbsp;&middot;&nbsp; 2024 &nbsp;&middot;&nbsp; <span class="cite">3 citations</span></div>
+            </div>
+            <span class="acc-chevron">&#43;</span>
+          </button>
+          <div class="acc-body">
+            <div class="acc-inner">
+              <p class="authors">Jiao J., Afroogh S., <strong>Chen K.</strong>, Atkinson D., Dhurandhar A.</p>
+              <p class="venue">Harvard Dataverse &middot; arXiv:2501.02063 &middot; 2024</p>
+              <div class="pill-row"><a href="https://arxiv.org/abs/2501.02063" class="pill" target="_blank" rel="noopener">arXiv &rarr;</a></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <button class="acc-btn" aria-expanded="false">
+            <div class="acc-info">
+              <div class="acc-title">The global landscape of academic guidelines for generative AI and LLMs (preprint)</div>
+              <div class="acc-sub">arXiv:2406.18842 &nbsp;&middot;&nbsp; 2024 &nbsp;&middot;&nbsp; <span class="cite">15 citations</span></div>
+            </div>
+            <span class="acc-chevron">&#43;</span>
+          </button>
+          <div class="acc-body">
+            <div class="acc-inner">
+              <p class="authors">Jiao J., Afroogh S., <strong>Chen K.</strong>, Atkinson D., Dhurandhar A.</p>
+              <p class="venue">arXiv preprint arXiv:2406.18842 &middot; 2024</p>
+              <div class="pill-row"><a href="https://arxiv.org/abs/2406.18842" class="pill" target="_blank" rel="noopener">arXiv &rarr;</a></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; <span id="year"></span> Kevin Chen &nbsp;&middot;&nbsp;
+    <a href="mailto:kevinchen2662@gmail.com">kevinchen2662@gmail.com</a></p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.querySelectorAll('.acc-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const open = btn.getAttribute('aria-expanded') === 'true';
+        btn.closest('.acc-list').querySelectorAll('.acc-btn').forEach(b => {
+          b.setAttribute('aria-expanded', 'false');
+          b.nextElementSibling.classList.remove('open');
+        });
+        if (!open) { btn.setAttribute('aria-expanded', 'true'); btn.nextElementSibling.classList.add('open'); }
+      });
+    });
+  </script>
+</body>
+</html>
